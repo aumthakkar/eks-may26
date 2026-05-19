@@ -8,8 +8,8 @@ variable "private_subnets_count" {}
 variable "auto_create_public_subnets" {}
 variable "auto_create_private_subnets" {}
 
-variable "public_cidr_block" {}
-variable "private_cidr_block" {}
+variable "manual_public_cidr_block" {}
+variable "manual_private_cidr_block" {}
 
 # EKS Cluster Variables
 variable "eks_version" {}
