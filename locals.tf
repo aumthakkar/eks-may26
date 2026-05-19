@@ -1,6 +1,11 @@
 locals {
-  public_cidr_block  = [for i in range(2, 255, 2) : cidrsubnet(var.vpc_cidr, 8, i)]
-  private_cidr_block = [for i in range(1, 255, 2) : cidrsubnet(var.vpc_cidr, 8, i)]
+  public_cidr  = [for i in range(2, 255, 2) : cidrsubnet(var.vpc_cidr, 8, i)]
+  private_cidr = [for i in range(1, 255, 2) : cidrsubnet(var.vpc_cidr, 8, i)]
+}
+
+locals {
+  public_cidr_block = var.auto_create_public_subnets ? local.public_cidr : var.public_cidr_block
+  private_cidr_block = var.auto_create_private_subnets ? local.private_cidr : var.private_cidr_block
 }
 
 locals {
